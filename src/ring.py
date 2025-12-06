@@ -3,6 +3,7 @@ Ring class with sight words for the game.
 """
 import pygame
 import random
+import math
 
 
 class Ring(pygame.sprite.Sprite):
@@ -39,7 +40,7 @@ class Ring(pygame.sprite.Sprite):
         
         # Bobbing animation
         self.bob_offset += self.bob_speed
-        self.rect.y = self.initial_y + int(5 * pygame.math.Vector2(0, 1).rotate(self.bob_offset * 10).y)
+        self.rect.y = self.initial_y + int(5 * math.sin(self.bob_offset))
     
     def get_word(self):
         """Return the sight word for this ring."""

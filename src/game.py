@@ -206,9 +206,11 @@ class SonicSightWordGame:
         if self.message:
             text_surface = self.font_medium.render(self.message, True, self.message_color)
             text_rect = text_surface.get_rect(center=(self.width // 2, 50))
-            # Draw background for text
+            # Draw semi-transparent background for text
             bg_rect = text_rect.inflate(20, 10)
-            pygame.draw.rect(self.screen, (0, 0, 0, 128), bg_rect)
+            bg_surface = pygame.Surface(bg_rect.size, pygame.SRCALPHA)
+            bg_surface.fill((0, 0, 0, 180))
+            self.screen.blit(bg_surface, bg_rect)
             self.screen.blit(text_surface, text_rect)
         
         # Draw pause message
